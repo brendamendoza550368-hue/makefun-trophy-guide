@@ -3,23 +3,85 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Legend — GTA VI Trophy Guide &amp; Tracker</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23241747'/%3E%3Cpath d='M16 5 L26 16 L16 27 L6 16 Z' fill='%2337e0c8'/%3E%3Cpath d='M16 10 L21 16 L16 22 L11 16 Z' fill='%23ff5da2'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="site-header">
+  <div class="header-text">
+    <h1>Leonida Legend</h1>
+    <p class="tagline">The Grand Theft Auto VI trophy guide &amp; tracker for PlayStation 5: all 55 trophies with a
+    guide and cited sources for each, the missables flagged before they bite, and a six-stage roadmap to the
+    platinum, <em>Vice Got a Price!</em></p>
+    <p class="header-note">Works fully offline. Your progress is stored only in this browser. One ground rule from
+    the guides: turning on a cheat is reported to disable trophy earning, so keep cheats off for the whole run.</p>
+  </div>
+  <div class="progress-panel" aria-label="Your progress">
+    <div class="progress-head">
+      <span id="progress-count">0 of 55 earned</span>
+      <span id="progress-percent">0%</span>
+    </div>
+    <div class="progress-bar"><div id="progress-fill"></div></div>
+    <div id="grade-progress" class="grade-progress"></div>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<nav class="view-tabs" aria-label="Views">
+  <button id="tab-checklist" class="tab active" type="button">Checklist &amp; guides</button>
+  <button id="tab-roadmap" class="tab" type="button">Roadmap to the platinum</button>
+</nav>
+
+<section class="controls" aria-label="Filters and progress tools">
+  <div class="chip-row" id="kind-chips" role="group" aria-label="Filter by kind"></div>
+  <div class="control-row">
+    <label>Grade
+      <select id="grade-filter">
+        <option value="all">All grades</option>
+        <option value="platinum">Platinum</option>
+        <option value="gold">Gold</option>
+        <option value="silver">Silver</option>
+        <option value="bronze">Bronze</option>
+      </select>
+    </label>
+    <label>Search
+      <input id="search" type="search" placeholder="trophy, mission, activity…">
+    </label>
+    <label class="toggle"><input id="hide-earned" type="checkbox"> Hide earned</label>
+    <label class="toggle spoiler-toggle"><input id="spoiler-toggle" type="checkbox"> Spoiler shield
+      <span class="hint">hides story trophies until earned</span></label>
+    <span class="spacer"></span>
+    <button id="export" type="button">Export progress</button>
+    <label class="import-button">Import progress
+      <input id="import" type="file" accept="application/json">
+    </label>
+  </div>
+  <p id="filter-status" class="filter-status" role="status"></p>
+</section>
+
+<main>
+  <section id="checklist-view">
+    <div id="trophy-list"></div>
+    <aside id="detail-panel" aria-label="Trophy guide">
+      <div class="detail-empty">
+        <h2>Pick a trophy</h2>
+        <p>Select any trophy in the checklist to read its full guide here: what the official description asks for,
+        how to earn it, whether it can be missed, and the sources the guidance is built from.</p>
+        <p>New to the run? Open the <strong>Roadmap</strong> tab — it orders all 55 trophies into six stages, from
+        the story campaign to 100% completion and the platinum.</p>
+      </div>
+    </aside>
+  </section>
+  <section id="roadmap-view" hidden></section>
+</main>
+
+<footer>
+  <p>Trophy names, descriptions and grades are the official PlayStation 5 list for Grand Theft Auto VI, as
+  published by PlayStation and mirrored by the trackers cited in each trophy's guide. Every guide here is written
+  for this page in our own words and cites its sources beside it. This is a fan-made tool; it is not affiliated
+  with Rockstar Games or PlayStation.</p>
+</footer>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>
